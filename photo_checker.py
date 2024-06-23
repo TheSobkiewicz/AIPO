@@ -5,7 +5,7 @@ from deepface import DeepFace
 def get_person_document(image):
     imgs = DeepFace.find(img_path = image, db_path = "./data/documents", enforce_detection = False)
     if imgs[0].empty:
-        return "No face found in the database."
+        return []
     ids = set(imgs[0]['identity'].values.tolist())
     results = get_data_from_document(ids)
     return results
